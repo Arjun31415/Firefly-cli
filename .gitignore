@@ -1,0 +1,7 @@
+/target
+*.pcapng
+
+# Nix stuff
+.envrc
+.direnv/
+result
