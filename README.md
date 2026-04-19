@@ -2,12 +2,14 @@
 
 CLI for managing colors and effects for CosmicByte Firefly keyboard.
 
-## About 
-This project was done by reverse engineering the firefly software on windows. On Windows, The packets were sniffed using WireShark while running the  firefly GUI software. Then packets were analysed and the logic written in rust using `rusb` crate.  
+## About
 
-## Features 
+This project was done by reverse engineering the firefly software on windows. On Windows, The packets were sniffed using WireShark while running the firefly GUI software. Then packets were analysed and the logic written in rust using `rusb` crate.
+
+## Features
+
 - [x] 12 different Effects
-    - [x] Setting loop/individual color of effects
+  - [x] Setting loop/individual color of effects
 
 - [x] 7 different colors
 
@@ -15,13 +17,13 @@ This project was done by reverse engineering the firefly software on windows. On
 - [ ] Brightness control (This can already be modified via keybind Fn + {up,down} arrow)
 - [ ] Speed control (This can already be modified via keybind Fn + {left,right} arrow)
 
-## Usage 
+## Usage
 
 1. Requires user to have permission to access usb devices, otherwise sudo can be used (not recommended).
-Ref: this stackoverflow [link](https://stackoverflow.com/questions/22713834/libusb-cannot-open-usb-device-permission-isse-netbeans-ubuntu)
-2. git clone 
-3. Run `cargo run` one time to build and start the binary
-4. After that, use the binary directly from `./target/debug/Firefly-cli` or `./Firefly-cli` if you are in `/target/debug/`
+   Ref: this stackoverflow [link](https://stackoverflow.com/questions/22713834/libusb-cannot-open-usb-device-permission-isse-netbeans-ubuntu)
+2. git clone
+3. Run `cargo build` to build the binary
+4. The executable will be present in `target/<build-type>/` (e.g. `target/debug/` for a debug build or `target/release/` for a release build)
 
 ### Commands
 
@@ -30,7 +32,7 @@ The CLI currently uses flags instead of subcommands.
 Basic format:
 
 ```bash
-./target/debug/Firefly-cli --effect <effect-name> [--colors <7 hex colors>] [--ci <0-7>]
+Firefly-cli --effect <effect-name> [--colors <7 hex colors>] [--ci <0-7>]
 ```
 
 ### Flags
@@ -77,90 +79,91 @@ If `--colors` is not provided, these 7 colors are used:
 Solid color using the first palette entry:
 
 ```bash
-./target/debug/Firefly-cli --effect static --ci 0
+Firefly-cli --effect static --ci 0
 ```
 
 Without lights:
+
 ```bash
-./target/debug/Firefly-cli --effect getting-off
+Firefly-cli --effect getting-off
 ```
 
 Static mode with color loop:
 
 ```bash
-./target/debug/Firefly-cli --effect static --ci 7
+Firefly-cli --effect static --ci 7
 ```
 
 Breathing effect:
 
 ```bash
-./target/debug/Firefly-cli --effect breathe
+Firefly-cli --effect breathe
 ```
 
 Fade effect:
 
 ```bash
-./target/debug/Firefly-cli --effect fade
+Firefly-cli --effect fade
 ```
 
 Little stars effect:
 
 ```bash
-./target/debug/Firefly-cli --effect little-stars
+Firefly-cli --effect little-stars
 ```
 
 Laser effect:
 
 ```bash
-./target/debug/Firefly-cli --effect laser
+Firefly-cli --effect laser
 ```
 
 Wave effect:
 
 ```bash
-./target/debug/Firefly-cli --effect wave
+Firefly-cli --effect wave
 ```
 
 Neon effect:
 
 ```bash
-./target/debug/Firefly-cli --effect neon
+Firefly-cli --effect neon
 ```
 
 Raindrop effect:
 
 ```bash
-./target/debug/Firefly-cli --effect raindrop
+Firefly-cli --effect raindrop
 ```
 
 Ripple effect using the third palette color:
 
 ```bash
-./target/debug/Firefly-cli --effect ripple --ci 2
+Firefly-cli --effect ripple --ci 2
 ```
 
 Wave2 effect:
 
 ```bash
-./target/debug/Firefly-cli --effect wave2
+Firefly-cli --effect wave2
 ```
 
 Swirl effect:
 
 ```bash
-./target/debug/Firefly-cli --effect swirl
+Firefly-cli --effect swirl
 ```
 
 Custom 7-color palette:
 
 ```bash
-./target/debug/Firefly-cli --effect wave --colors "#ff0000,#00ff00,#ffff00,#0000ff,#00ffff,#ff00ff,#ffffff"
+Firefly-cli --effect wave --colors "#ff0000,#00ff00,#ffff00,#0000ff,#00ffff,#ff00ff,#ffffff"
 ```
 
 Show built-in CLI help:
 
 ```bash
-./target/debug/Firefly-cli --help
+Firefly-cli --help
 ```
 
 ### Notes
@@ -170,7 +173,7 @@ Show built-in CLI help:
 - `--ci` must be between `0` and `7`.
 - If USB permissions are not configured on Linux, the program may fail to access the keyboard.
 
+## Acknowledgements
 
-## Acknowledgements 
 - This stackoverflow [answer](https://stackoverflow.com/questions/37943825/send-hid-report-with-pyusb/52368526#52368526) which came in clutch, while I was breaking my head over why HIDAPI was not working.
 - Low Byte Productions [Video](https://www.youtube.com/watch?v=is9wVOKeIjQ)
